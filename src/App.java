@@ -1,11 +1,16 @@
 import java.util.Scanner;
 
+import com.infy.scannerdemo.ScannerDemo;
+
 import entity.Car;
 import entity.Chocolate;
+import entity.Loan;
 import entity.Point;
 import entity.Reciept;
 import entity.Rectangle;
 import entity.Student;
+import event.SingleEventRegistration;
+import event.TeamEventRegistration;
 import utility.EnhancedFor;
 import utility.FunCalculator;
 import utility.ReverseCalculator;
@@ -13,7 +18,7 @@ import utility.SalaryUtilities;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int value = 11;
+        int value = 14;
         switch (value) {
             case 1:
                 executeStudentProgram();
@@ -48,9 +53,40 @@ public class App {
             case 11:
                 createChocolate();
                 break;
+            case 12:
+                testScanner();
+                break;
+            case 13:
+                testLoanApp();
+                break;
+            case 14:
+                testEventRegistration();
+                break;
             default:
                 break;
         }
+    }
+
+    private static void testEventRegistration() {
+        SingleEventRegistration registration_1 = new SingleEventRegistration("Jenny", "Sing&Win", 1);
+        registration_1.registerEvent();
+        TeamEventRegistration registration_3 = new TeamEventRegistration("Aura", "ShakeALeg", 5, 1);
+        registration_3.registerEvent();
+        SingleEventRegistration registration_2 = new SingleEventRegistration("Hudson", "PlayAway", 2);
+        registration_2.registerEvent();
+
+    }
+
+    private static void testLoanApp() {
+        Loan loan_1 = new Loan();
+        Loan loan_2 = new Loan(123, 456, 789, 10000, 10, 8f);
+        System.out.println("Loan Counter of Loan 1: " + loan_1.getLoanCounter());
+        System.out.println("Loan Counter of Loan 2: " + loan_2.getLoanCounter());
+    }
+
+    private static void testScanner() {
+        ScannerDemo scannerDemo = new ScannerDemo();
+        scannerDemo.testScanner();
     }
 
     private static void createChocolate() {

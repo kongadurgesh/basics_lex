@@ -1,5 +1,13 @@
 package com.infy.scannerdemo;
 
-public class ScannerDemo {
+import java.util.Scanner;
 
+public class ScannerDemo {
+    public void testScanner() {
+        Scanner inp = new Scanner(System.in);
+        System.out.println("Enter Roll No: ");
+        int rollNo = inp.nextInt();
+        System.out.println(rollNo);
+        inp.close();
+    }
 }
