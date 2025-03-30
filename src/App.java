@@ -1,15 +1,19 @@
 import java.util.Scanner;
 
 import entity.Car;
+import entity.Chocolate;
 import entity.Point;
 import entity.Reciept;
+import entity.Rectangle;
 import entity.Student;
+import utility.EnhancedFor;
 import utility.FunCalculator;
 import utility.ReverseCalculator;
+import utility.SalaryUtilities;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int value = 7;
+        int value = 11;
         switch (value) {
             case 1:
                 executeStudentProgram();
@@ -32,9 +36,72 @@ public class App {
             case 7:
                 checkArmstrongOrLuckyNumber();
                 break;
+            case 8:
+                enhancedFor();
+                break;
+            case 9:
+                salaryComparisions();
+                break;
+            case 10:
+                createRectangle();
+                break;
+            case 11:
+                createChocolate();
+                break;
             default:
                 break;
         }
+    }
+
+    private static void createChocolate() {
+        Chocolate chocolate_1 = new Chocolate();
+        chocolate_1.setBarCode(101);
+        chocolate_1.setName("Cadbury");
+        chocolate_1.setWeight(12);
+        chocolate_1.setCost(10);
+
+        Chocolate chocolate_2 = new Chocolate();
+        chocolate_2.setBarCode(102);
+        chocolate_2.setName("Hershey's");
+        chocolate_2.setWeight(24);
+        chocolate_2.setCost(50);
+
+        Chocolate chocolate_3 = new Chocolate(101, "Cadbury", 12, 10);
+
+        System.out.println(chocolate_1);
+        System.out.println(chocolate_2);
+        System.out.println(chocolate_3);
+    }
+
+    private static void createRectangle() {
+        Rectangle rectangle = new Rectangle();
+        rectangle.setLength(10);
+        rectangle.setBreadth(5);
+        System.out.println(rectangle.toString());
+    }
+
+    private static void salaryComparisions() {
+        SalaryUtilities salaryUtilities = new SalaryUtilities();
+        double salaries[] = { 23500.0, 25080.0, 28760.0, 22340.0, 19890.0 };
+        double averageSalary = salaryUtilities.calculateAverageSalary(salaries);
+        System.out.println("The average salary of the employee is : " + averageSalary);
+        int countOfSalariesGreaterThanAverage = salaryUtilities.getCountGreaterSalaryThanAverage(salaries,
+                averageSalary);
+        System.out.println("The number of employees having salary greater than the average is : "
+                + countOfSalariesGreaterThanAverage);
+        int countOfSalariesLessThanAverage = salaryUtilities.getCountLessSalaryThanAverage(salaries, averageSalary);
+        System.out.println(
+                "The number of employees having salary lesser than the average is : " + countOfSalariesLessThanAverage);
+    }
+
+    private static void enhancedFor() {
+        EnhancedFor enhancedFor = new EnhancedFor();
+        enhancedFor.storeMarks(100);
+        enhancedFor.storeMarks(200);
+        enhancedFor.storeMarks(12);
+        enhancedFor.storeMarks(123);
+        enhancedFor.storeMarks(1234);
+        enhancedFor.displayMarks();
     }
 
     private static void checkArmstrongOrLuckyNumber() {
@@ -44,7 +111,7 @@ public class App {
         FunCalculator calculator = new FunCalculator();
         switch (choice) {
             case 1:
-                System.out.print("Enetr a number to Check Armstrong: ");
+                System.out.print("Enter a number to Check Armstrong: ");
                 int number = inp.nextInt();
                 if (calculator.isArmStrong(number)) {
                     System.out.println("The number " + number + " is an Armstrong number");
@@ -52,8 +119,17 @@ public class App {
                     System.out.println("The number " + number + " is not an Armstrong number");
                 }
                 break;
-
+            case 2:
+                System.out.print("Enter a number to Check Lucky: ");
+                number = inp.nextInt();
+                if (calculator.isLucky(number)) {
+                    System.out.println("The number " + number + " is a lucky number");
+                } else {
+                    System.out.println("The number " + number + " is not a lucky number");
+                }
+                break;
             default:
+                System.out.println("Oops! Invalid Choice!");
                 break;
         }
         inp.close();

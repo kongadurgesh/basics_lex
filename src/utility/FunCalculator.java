@@ -11,4 +11,14 @@ public class FunCalculator {
         }
         return sum == number;
     }
+
+    public boolean isLucky(int number) {
+        int sum = 0;
+        String numberString = Integer.toString(number);
+        for (int i = 1; i < numberString.length(); i += 2) {
+            int t = Character.getNumericValue(numberString.charAt(i));
+            sum = sum + (t * t);
+        }
+        return sum % 9 == 0;
+    }
 }
