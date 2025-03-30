@@ -1,12 +1,24 @@
+import java.util.Scanner;
+
+import com.infy.scannerdemo.ScannerDemo;
+
 import entity.Car;
+import entity.Chocolate;
+import entity.Loan;
 import entity.Point;
 import entity.Reciept;
+import entity.Rectangle;
 import entity.Student;
+import event.SingleEventRegistration;
+import event.TeamEventRegistration;
+import utility.EnhancedFor;
+import utility.FunCalculator;
 import utility.ReverseCalculator;
+import utility.SalaryUtilities;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int value = 6;
+        int value = 14;
         switch (value) {
             case 1:
                 executeStudentProgram();
@@ -26,9 +38,137 @@ public class App {
             case 6:
                 calculateReverses();
                 break;
+            case 7:
+                checkArmstrongOrLuckyNumber();
+                break;
+            case 8:
+                enhancedFor();
+                break;
+            case 9:
+                salaryComparisions();
+                break;
+            case 10:
+                createRectangle();
+                break;
+            case 11:
+                createChocolate();
+                break;
+            case 12:
+                testScanner();
+                break;
+            case 13:
+                testLoanApp();
+                break;
+            case 14:
+                testEventRegistration();
+                break;
             default:
                 break;
         }
+    }
+
+    private static void testEventRegistration() {
+        SingleEventRegistration registration_1 = new SingleEventRegistration("Jenny", "Sing&Win", 1);
+        registration_1.registerEvent();
+        TeamEventRegistration registration_3 = new TeamEventRegistration("Aura", "ShakeALeg", 5, 1);
+        registration_3.registerEvent();
+        SingleEventRegistration registration_2 = new SingleEventRegistration("Hudson", "PlayAway", 2);
+        registration_2.registerEvent();
+
+    }
+
+    private static void testLoanApp() {
+        Loan loan_1 = new Loan();
+        Loan loan_2 = new Loan(123, 456, 789, 10000, 10, 8f);
+        System.out.println("Loan Counter of Loan 1: " + loan_1.getLoanCounter());
+        System.out.println("Loan Counter of Loan 2: " + loan_2.getLoanCounter());
+    }
+
+    private static void testScanner() {
+        ScannerDemo scannerDemo = new ScannerDemo();
+        scannerDemo.testScanner();
+    }
+
+    private static void createChocolate() {
+        Chocolate chocolate_1 = new Chocolate();
+        chocolate_1.setBarCode(101);
+        chocolate_1.setName("Cadbury");
+        chocolate_1.setWeight(12);
+        chocolate_1.setCost(10);
+
+        Chocolate chocolate_2 = new Chocolate();
+        chocolate_2.setBarCode(102);
+        chocolate_2.setName("Hershey's");
+        chocolate_2.setWeight(24);
+        chocolate_2.setCost(50);
+
+        Chocolate chocolate_3 = new Chocolate(101, "Cadbury", 12, 10);
+
+        System.out.println(chocolate_1);
+        System.out.println(chocolate_2);
+        System.out.println(chocolate_3);
+    }
+
+    private static void createRectangle() {
+        Rectangle rectangle = new Rectangle();
+        rectangle.setLength(10);
+        rectangle.setBreadth(5);
+        System.out.println(rectangle.toString());
+    }
+
+    private static void salaryComparisions() {
+        SalaryUtilities salaryUtilities = new SalaryUtilities();
+        double salaries[] = { 23500.0, 25080.0, 28760.0, 22340.0, 19890.0 };
+        double averageSalary = salaryUtilities.calculateAverageSalary(salaries);
+        System.out.println("The average salary of the employee is : " + averageSalary);
+        int countOfSalariesGreaterThanAverage = salaryUtilities.getCountGreaterSalaryThanAverage(salaries,
+                averageSalary);
+        System.out.println("The number of employees having salary greater than the average is : "
+                + countOfSalariesGreaterThanAverage);
+        int countOfSalariesLessThanAverage = salaryUtilities.getCountLessSalaryThanAverage(salaries, averageSalary);
+        System.out.println(
+                "The number of employees having salary lesser than the average is : " + countOfSalariesLessThanAverage);
+    }
+
+    private static void enhancedFor() {
+        EnhancedFor enhancedFor = new EnhancedFor();
+        enhancedFor.storeMarks(100);
+        enhancedFor.storeMarks(200);
+        enhancedFor.storeMarks(12);
+        enhancedFor.storeMarks(123);
+        enhancedFor.storeMarks(1234);
+        enhancedFor.displayMarks();
+    }
+
+    private static void checkArmstrongOrLuckyNumber() {
+        System.out.println("Enter the Choice, 1: Armstong , 2: Lucky");
+        Scanner inp = new Scanner(System.in);
+        int choice = inp.nextInt();
+        FunCalculator calculator = new FunCalculator();
+        switch (choice) {
+            case 1:
+                System.out.print("Enter a number to Check Armstrong: ");
+                int number = inp.nextInt();
+                if (calculator.isArmStrong(number)) {
+                    System.out.println("The number " + number + " is an Armstrong number");
+                } else {
+                    System.out.println("The number " + number + " is not an Armstrong number");
+                }
+                break;
+            case 2:
+                System.out.print("Enter a number to Check Lucky: ");
+                number = inp.nextInt();
+                if (calculator.isLucky(number)) {
+                    System.out.println("The number " + number + " is a lucky number");
+                } else {
+                    System.out.println("The number " + number + " is not a lucky number");
+                }
+                break;
+            default:
+                System.out.println("Oops! Invalid Choice!");
+                break;
+        }
+        inp.close();
     }
 
     private static void calculateReverses() {
