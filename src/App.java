@@ -1,12 +1,15 @@
+import java.util.Scanner;
+
 import entity.Car;
 import entity.Point;
 import entity.Reciept;
 import entity.Student;
+import utility.FunCalculator;
 import utility.ReverseCalculator;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int value = 6;
+        int value = 7;
         switch (value) {
             case 1:
                 executeStudentProgram();
@@ -26,9 +29,34 @@ public class App {
             case 6:
                 calculateReverses();
                 break;
+            case 7:
+                checkArmstrongOrLuckyNumber();
+                break;
             default:
                 break;
         }
+    }
+
+    private static void checkArmstrongOrLuckyNumber() {
+        System.out.println("Enter the Choice, 1: Armstong , 2: Lucky");
+        Scanner inp = new Scanner(System.in);
+        int choice = inp.nextInt();
+        FunCalculator calculator = new FunCalculator();
+        switch (choice) {
+            case 1:
+                System.out.print("Enetr a number to Check Armstrong: ");
+                int number = inp.nextInt();
+                if (calculator.isArmStrong(number)) {
+                    System.out.println("The number " + number + " is an Armstrong number");
+                } else {
+                    System.out.println("The number " + number + " is not an Armstrong number");
+                }
+                break;
+
+            default:
+                break;
+        }
+        inp.close();
     }
 
     private static void calculateReverses() {
