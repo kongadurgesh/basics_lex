@@ -4,22 +4,105 @@ import com.infy.scannerdemo.ScannerDemo;
 
 import entity.Car;
 import entity.Chocolate;
+import entity.ContractEmployee;
+import entity.CreditCardPayment;
+import entity.DataProvider;
+import entity.Intern;
 import entity.Loan;
+import entity.PermanentEmployee;
+import entity.PlayerRating;
 import entity.Point;
+import entity.PremiumUser;
+import entity.PrivilegedCustomer;
+import entity.RRPaymentServices;
 import entity.Reciept;
 import entity.Rectangle;
+import entity.Registration;
+import entity.RegularCustomer;
+import entity.ShoppingPayment;
 import entity.Student;
+import entity.Trainee;
+import entity.User;
 import event.SingleEventRegistration;
 import event.TeamEventRegistration;
+import sealed.CocoaPowder;
+import sealed.DarkChocolate;
+import sealed.WhiteChocolate;
 import utility.EnhancedFor;
 import utility.FunCalculator;
 import utility.ReverseCalculator;
 import utility.SalaryUtilities;
 
 public class App {
+    private static void testFinalStipend() {
+        Student student_1 = new Student();
+        student_1.setStudentId(1212);
+        student_1.setAggregateMarks(93);
+        double totalStipend = student_1.calculateTotalStipend();
+        System.out.println("The final stipend of " + student_1.getStudentId() + " is $" + totalStipend);
+        Student student2 = new Student();
+        student2.setStudentId(1222);
+        student2.setAggregateMarks(84);
+        totalStipend = student2.calculateTotalStipend();
+        System.out.println("The final stipend of " + student2.getStudentId() + " is $" + totalStipend);
+    }
+
+    private static void testRRPayments() {
+        RRPaymentServices paymentServices_1 = new ShoppingPayment(5000.0, 561328);
+        paymentServices_1.payBill(5000);
+
+        RRPaymentServices paymentServices_2 = new ShoppingPayment(5000, 561328);
+        paymentServices_2.payBill(6000);
+
+        RRPaymentServices paymentServices_3 = new ShoppingPayment(5000, 561328);
+        paymentServices_3.payBill(4000);
+
+        RRPaymentServices paymentServices_4 = new CreditCardPayment(10000.23, 5001);
+        paymentServices_4.payBill(15000);
+
+        RRPaymentServices paymentServices_5 = new CreditCardPayment(10000.23, 5001);
+        paymentServices_5.payBill(0);
+
+        RRPaymentServices paymentServices_6 = new CreditCardPayment(10000.23, 5001);
+        paymentServices_6.payBill(5000);
+    }
+
+    private static void testInterfacePercentage() {
+        DataProvider provider_1 = new Intern(5000, 500);
+        provider_1.calcPercentage();
+        DataProvider provider_2 = new Trainee(6000);
+        provider_2.calcPercentage();
+        DataProvider provider_3 = new Intern(8000, 500);
+        provider_3.calcPercentage();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 14;
+        int value = 23;
         switch (value) {
+            case 23:
+                testSealedClasses();
+                break;
+            case 22:
+                testInterfaceSaleApplication();
+                break;
+            case 21:
+                testInterfacePercentage();
+                break;
+            case 20:
+                testRRPayments();
+                break;
+            case 19:
+                testFinalStipend();
+                break;
+            case 18:
+                testUserPayment();
+                break;
+            case 17:
+                testPlayerRating();
+                break;
+            case 16:
+                createRegistration();
+                break;
             case 1:
                 executeStudentProgram();
                 break;
@@ -62,9 +145,137 @@ public class App {
             case 14:
                 testEventRegistration();
                 break;
+            case 15:
+                testEmployeeInheritance();
+                break;
             default:
                 break;
         }
+    }
+
+    private static void testSealedClasses() {
+        CocoaPowder chocolate_1 = new CocoaPowder();
+        chocolate_1.display();
+        WhiteChocolate chocolate_2 = new WhiteChocolate();
+        chocolate_2.display();
+        DarkChocolate chocolate_3 = new DarkChocolate();
+        chocolate_3.display();
+    }
+
+    private static void testInterfaceSaleApplication() {
+        RegularCustomer customer_1 = new RegularCustomer();
+        System.out.println("bill for customer_1 is: "
+                + customer_1.getBill());
+        PrivilegedCustomer customer_2 = new PrivilegedCustomer();
+        System.out.println("bill for customer_2 is: " + customer_2.getBill());
+    }
+
+    private static void testUserPayment() {
+        User user_1 = new User(101, "Joe", "joe@abc.com", 100);
+        boolean paymentStatus = user_1.makePayment(70);
+        if (paymentStatus) {
+            System.out.println("Congratulations " + user_1.getUserName() + ", payment of $70.0 was successful!");
+            System.out.println("Your wallet balance is $" + user_1.getWalletBalance());
+        }
+        PremiumUser user_2 = new PremiumUser(201, "Jill", "jill@abc.com", 300);
+        paymentStatus = user_2.makePayment(150);
+        if (paymentStatus) {
+            System.out.println("Congratulations " + user_2.getUserName() + ", payment of $150.0 was successful!");
+            System.out.println("Your wallet balance is $" + user_2.getWalletBalance());
+            System.out.println("You have " + user_2.getRewardPoints() + " points!");
+        }
+        paymentStatus = user_2.makePayment(80);
+        if (paymentStatus) {
+            System.out.println("Congratulations " + user_2.getUserName() + ", payment of $80.0 was successful!");
+            System.out.println("Your wallet balance is $" + user_2.getWalletBalance());
+            System.out.println("You have " + user_2.getRewardPoints() + " points!");
+        }
+        paymentStatus = user_2.makePayment(120);
+        if (paymentStatus) {
+            System.out.println("Congratulations " + user_2.getUserName() + ", payment of $120.0 was successful!");
+            System.out.println("Your wallet balance is $" + user_2.getWalletBalance());
+            System.out.println("You have " + user_2.getRewardPoints() + " points!");
+        } else {
+            System.out.println("Sorry " + user_2.getUserName() + ", you do not have enough balance to pay the bill!");
+            System.out.println("Your wallet balance is $" + user_2.getWalletBalance());
+            System.out.println("You have " + user_2.getRewardPoints() + " points!");
+        }
+    }
+
+    private static void testPlayerRating() {
+        PlayerRating playerRating_1 = new PlayerRating(1, "Beckham");
+        playerRating_1.calculateAverageRating(9f, 9.9f);
+        playerRating_1.calculateCategory();
+        playerRating_1.display();
+
+        PlayerRating playerRating_2 = new PlayerRating(1, "Oscar");
+        playerRating_2.calculateAverageRating(1, 1, 1);
+        playerRating_2.calculateCategory();
+        playerRating_2.display();
+    }
+
+    private static void createRegistration() {
+        Registration registration_1 = new Registration("Kevin", "MN9891N", new long[] { 9452425421L, 7676765252L });
+        System.out.println("Congratulations " + registration_1.getCustomerName()
+                + "!!! you have been successfully registered for our services with the following details:");
+        System.out.println("Passport number: " + registration_1.getPassportNo());
+        System.out.print("Phone numbers: ");
+        long[] phoneNos = registration_1.getTelephoneNo();
+        for (long phoneNo : phoneNos) {
+            System.out.println(phoneNo);
+        }
+        Registration registration_2 = new Registration("Julias",
+                123, "PN7878", new long[] { 2345615451L,
+                        6763562562L });
+        System.out.println("Congratulations " + registration_2.getCustomerName()
+                + "!!! you have been successfully registered for our services with the following details:");
+        System.out.println("Pan card number: " + registration_2.getPanCardNo());
+        System.out.print("Phone numbers: ");
+        phoneNos = registration_2.getTelephoneNo();
+        for (long phoneNo : phoneNos) {
+            System.out.println(phoneNo);
+        }
+        Registration registration_3 = new Registration("Jammy", 45453, 765, new long[] { 9634524353L,
+                9887373737L });
+        System.out.println("Congratulations " + registration_3.getCustomerName()
+                + "!!! you have been successfully registered for our services with the following details:");
+        System.out.println("Voter id: " + registration_3.getVoterId());
+        System.out.println("License Number: " + registration_3.getLicenseNo());
+        System.out.print("Phone numbers: ");
+        phoneNos = registration_2.getTelephoneNo();
+        for (long phoneNo : phoneNos) {
+            System.out.println(phoneNo);
+        }
+        Registration registration_4 = new Registration("Rose", "PN8934", 34356, new long[] { 9867456367L,
+                7645367356L });
+        System.out.println("Congratulations " + registration_4.getCustomerName()
+                + "!!! you have been successfully registered for our services with the following details:");
+        System.out.println("Pan card Number: " + registration_4.getPanCardNo());
+        System.out.println("Voter id: " + registration_4.getVoterId());
+        System.out.print("Phone numbers: ");
+        phoneNos = registration_2.getTelephoneNo();
+        for (long phoneNo : phoneNos) {
+            System.out.println(phoneNo);
+        }
+    }
+
+    private static void testEmployeeInheritance() {
+        PermanentEmployee employee_1 = new PermanentEmployee();
+        employee_1.setName("Anil");
+        employee_1.setEmpId(101);
+        employee_1.setBasicPay(10000);
+        employee_1.setHra(1500);
+        employee_1.setExperience(3);
+        employee_1.calculateSalary();
+        System.out.println("Permanent Employee: Your salary is: " + employee_1.getSalary());
+
+        ContractEmployee employee_2 = new ContractEmployee();
+        employee_2.setName("Ankit");
+        employee_2.setEmpId(102);
+        employee_2.setWages(500);
+        employee_2.setHours(10);
+        employee_2.calculateSalary();
+        System.out.println("Contract Employee: Your salary is: " + employee_2.getSalary());
     }
 
     private static void testEventRegistration() {

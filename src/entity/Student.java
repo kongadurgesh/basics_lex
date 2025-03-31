@@ -6,6 +6,32 @@ public class Student {
     private float qualifyingExamMarks;
     private char residentialStatus;
     private int yearOfEngg;
+    private final int STIPEND = 0;
+    private int aggregateMarks;
+
+    public double calculateTotalStipend() {
+        if (aggregateMarks >= 95) {
+            return 120;
+        } else if (aggregateMarks >= 90) {
+            return 115;
+        } else if (aggregateMarks >= 85) {
+            return 110;
+        } else {
+            return 100;
+        }
+    }
+
+    public int getStipend() {
+        return STIPEND;
+    }
+
+    public int getAggregateMarks() {
+        return aggregateMarks;
+    }
+
+    public void setAggregateMarks(int aggregateMarks) {
+        this.aggregateMarks = aggregateMarks;
+    }
 
     public int getStudentId() {
         return studentId;
