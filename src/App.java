@@ -5,14 +5,19 @@ import com.infy.scannerdemo.ScannerDemo;
 import entity.Car;
 import entity.Chocolate;
 import entity.ContractEmployee;
+import entity.CreditCardPayment;
 import entity.Loan;
 import entity.PermanentEmployee;
 import entity.PlayerRating;
 import entity.Point;
+import entity.PremiumUser;
+import entity.RRPaymentServices;
 import entity.Reciept;
 import entity.Rectangle;
 import entity.Registration;
+import entity.ShoppingPayment;
 import entity.Student;
+import entity.User;
 import event.SingleEventRegistration;
 import event.TeamEventRegistration;
 import utility.EnhancedFor;
@@ -21,9 +26,51 @@ import utility.ReverseCalculator;
 import utility.SalaryUtilities;
 
 public class App {
+    private static void testFinalStipend() {
+        Student student_1 = new Student();
+        student_1.setStudentId(1212);
+        student_1.setAggregateMarks(93);
+        double totalStipend = student_1.calculateTotalStipend();
+        System.out.println("The final stipend of " + student_1.getStudentId() + " is $" + totalStipend);
+        Student student2 = new Student();
+        student2.setStudentId(1222);
+        student2.setAggregateMarks(84);
+        totalStipend = student2.calculateTotalStipend();
+        System.out.println("The final stipend of " + student2.getStudentId() + " is $" + totalStipend);
+    }
+
+    private static void testRRPayments() {
+        RRPaymentServices paymentServices_1 = new ShoppingPayment(5000.0, 561328);
+        paymentServices_1.payBill(5000);
+
+        RRPaymentServices paymentServices_2 = new ShoppingPayment(5000, 561328);
+        paymentServices_2.payBill(6000);
+
+        RRPaymentServices paymentServices_3 = new ShoppingPayment(5000, 561328);
+        paymentServices_3.payBill(4000);
+
+        RRPaymentServices paymentServices_4 = new CreditCardPayment(10000.23, 5001);
+        paymentServices_4.payBill(15000);
+
+        RRPaymentServices paymentServices_5 = new CreditCardPayment(10000.23, 5001);
+        paymentServices_5.payBill(0);
+
+        RRPaymentServices paymentServices_6 = new CreditCardPayment(10000.23, 5001);
+        paymentServices_6.payBill(5000);
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 17;
+        int value = 20;
         switch (value) {
+            case 20:
+                testRRPayments();
+                break;
+            case 19:
+                testFinalStipend();
+                break;
+            case 18:
+                testUserPayment();
+                break;
             case 17:
                 testPlayerRating();
                 break;
@@ -77,6 +124,38 @@ public class App {
                 break;
             default:
                 break;
+        }
+    }
+
+    private static void testUserPayment() {
+        User user_1 = new User(101, "Joe", "joe@abc.com", 100);
+        boolean paymentStatus = user_1.makePayment(70);
+        if (paymentStatus) {
+            System.out.println("Congratulations " + user_1.getUserName() + ", payment of $70.0 was successful!");
+            System.out.println("Your wallet balance is $" + user_1.getWalletBalance());
+        }
+        PremiumUser user_2 = new PremiumUser(201, "Jill", "jill@abc.com", 300);
+        paymentStatus = user_2.makePayment(150);
+        if (paymentStatus) {
+            System.out.println("Congratulations " + user_2.getUserName() + ", payment of $150.0 was successful!");
+            System.out.println("Your wallet balance is $" + user_2.getWalletBalance());
+            System.out.println("You have " + user_2.getRewardPoints() + " points!");
+        }
+        paymentStatus = user_2.makePayment(80);
+        if (paymentStatus) {
+            System.out.println("Congratulations " + user_2.getUserName() + ", payment of $80.0 was successful!");
+            System.out.println("Your wallet balance is $" + user_2.getWalletBalance());
+            System.out.println("You have " + user_2.getRewardPoints() + " points!");
+        }
+        paymentStatus = user_2.makePayment(120);
+        if (paymentStatus) {
+            System.out.println("Congratulations " + user_2.getUserName() + ", payment of $120.0 was successful!");
+            System.out.println("Your wallet balance is $" + user_2.getWalletBalance());
+            System.out.println("You have " + user_2.getRewardPoints() + " points!");
+        } else {
+            System.out.println("Sorry " + user_2.getUserName() + ", you do not have enough balance to pay the bill!");
+            System.out.println("Your wallet balance is $" + user_2.getWalletBalance());
+            System.out.println("You have " + user_2.getRewardPoints() + " points!");
         }
     }
 
