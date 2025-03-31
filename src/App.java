@@ -13,16 +13,21 @@ import entity.PermanentEmployee;
 import entity.PlayerRating;
 import entity.Point;
 import entity.PremiumUser;
+import entity.PrivilegedCustomer;
 import entity.RRPaymentServices;
 import entity.Reciept;
 import entity.Rectangle;
 import entity.Registration;
+import entity.RegularCustomer;
 import entity.ShoppingPayment;
 import entity.Student;
 import entity.Trainee;
 import entity.User;
 import event.SingleEventRegistration;
 import event.TeamEventRegistration;
+import sealed.CocoaPowder;
+import sealed.DarkChocolate;
+import sealed.WhiteChocolate;
 import utility.EnhancedFor;
 import utility.FunCalculator;
 import utility.ReverseCalculator;
@@ -72,8 +77,14 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-        int value = 21;
+        int value = 23;
         switch (value) {
+            case 23:
+                testSealedClasses();
+                break;
+            case 22:
+                testInterfaceSaleApplication();
+                break;
             case 21:
                 testInterfacePercentage();
                 break;
@@ -140,6 +151,23 @@ public class App {
             default:
                 break;
         }
+    }
+
+    private static void testSealedClasses() {
+        CocoaPowder chocolate_1 = new CocoaPowder();
+        chocolate_1.display();
+        WhiteChocolate chocolate_2 = new WhiteChocolate();
+        chocolate_2.display();
+        DarkChocolate chocolate_3 = new DarkChocolate();
+        chocolate_3.display();
+    }
+
+    private static void testInterfaceSaleApplication() {
+        RegularCustomer customer_1 = new RegularCustomer();
+        System.out.println("bill for customer_1 is: "
+                + customer_1.getBill());
+        PrivilegedCustomer customer_2 = new PrivilegedCustomer();
+        System.out.println("bill for customer_2 is: " + customer_2.getBill());
     }
 
     private static void testUserPayment() {
