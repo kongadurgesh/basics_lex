@@ -5,12 +5,13 @@ import com.infy.scannerdemo.ScannerDemo;
 import entity.Car;
 import entity.Chocolate;
 import entity.ContractEmployee;
-import entity.Employee;
 import entity.Loan;
 import entity.PermanentEmployee;
+import entity.PlayerRating;
 import entity.Point;
 import entity.Reciept;
 import entity.Rectangle;
+import entity.Registration;
 import entity.Student;
 import event.SingleEventRegistration;
 import event.TeamEventRegistration;
@@ -21,8 +22,14 @@ import utility.SalaryUtilities;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int value = 15;
+        int value = 17;
         switch (value) {
+            case 17:
+                testPlayerRating();
+                break;
+            case 16:
+                createRegistration();
+                break;
             case 1:
                 executeStudentProgram();
                 break;
@@ -70,6 +77,63 @@ public class App {
                 break;
             default:
                 break;
+        }
+    }
+
+    private static void testPlayerRating() {
+        PlayerRating playerRating_1 = new PlayerRating(1, "Beckham");
+        playerRating_1.calculateAverageRating(9f, 9.9f);
+        playerRating_1.calculateCategory();
+        playerRating_1.display();
+
+        PlayerRating playerRating_2 = new PlayerRating(1, "Oscar");
+        playerRating_2.calculateAverageRating(1, 1, 1);
+        playerRating_2.calculateCategory();
+        playerRating_2.display();
+    }
+
+    private static void createRegistration() {
+        Registration registration_1 = new Registration("Kevin", "MN9891N", new long[] { 9452425421L, 7676765252L });
+        System.out.println("Congratulations " + registration_1.getCustomerName()
+                + "!!! you have been successfully registered for our services with the following details:");
+        System.out.println("Passport number: " + registration_1.getPassportNo());
+        System.out.print("Phone numbers: ");
+        long[] phoneNos = registration_1.getTelephoneNo();
+        for (long phoneNo : phoneNos) {
+            System.out.println(phoneNo);
+        }
+        Registration registration_2 = new Registration("Julias",
+                123, "PN7878", new long[] { 2345615451L,
+                        6763562562L });
+        System.out.println("Congratulations " + registration_2.getCustomerName()
+                + "!!! you have been successfully registered for our services with the following details:");
+        System.out.println("Pan card number: " + registration_2.getPanCardNo());
+        System.out.print("Phone numbers: ");
+        phoneNos = registration_2.getTelephoneNo();
+        for (long phoneNo : phoneNos) {
+            System.out.println(phoneNo);
+        }
+        Registration registration_3 = new Registration("Jammy", 45453, 765, new long[] { 9634524353L,
+                9887373737L });
+        System.out.println("Congratulations " + registration_3.getCustomerName()
+                + "!!! you have been successfully registered for our services with the following details:");
+        System.out.println("Voter id: " + registration_3.getVoterId());
+        System.out.println("License Number: " + registration_3.getLicenseNo());
+        System.out.print("Phone numbers: ");
+        phoneNos = registration_2.getTelephoneNo();
+        for (long phoneNo : phoneNos) {
+            System.out.println(phoneNo);
+        }
+        Registration registration_4 = new Registration("Rose", "PN8934", 34356, new long[] { 9867456367L,
+                7645367356L });
+        System.out.println("Congratulations " + registration_4.getCustomerName()
+                + "!!! you have been successfully registered for our services with the following details:");
+        System.out.println("Pan card Number: " + registration_4.getPanCardNo());
+        System.out.println("Voter id: " + registration_4.getVoterId());
+        System.out.print("Phone numbers: ");
+        phoneNos = registration_2.getTelephoneNo();
+        for (long phoneNo : phoneNos) {
+            System.out.println(phoneNo);
         }
     }
 
