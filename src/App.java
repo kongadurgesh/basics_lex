@@ -6,6 +6,8 @@ import entity.Car;
 import entity.Chocolate;
 import entity.ContractEmployee;
 import entity.CreditCardPayment;
+import entity.DataProvider;
+import entity.Intern;
 import entity.Loan;
 import entity.PermanentEmployee;
 import entity.PlayerRating;
@@ -17,6 +19,7 @@ import entity.Rectangle;
 import entity.Registration;
 import entity.ShoppingPayment;
 import entity.Student;
+import entity.Trainee;
 import entity.User;
 import event.SingleEventRegistration;
 import event.TeamEventRegistration;
@@ -59,9 +62,21 @@ public class App {
         paymentServices_6.payBill(5000);
     }
 
+    private static void testInterfacePercentage() {
+        DataProvider provider_1 = new Intern(5000, 500);
+        provider_1.calcPercentage();
+        DataProvider provider_2 = new Trainee(6000);
+        provider_2.calcPercentage();
+        DataProvider provider_3 = new Intern(8000, 500);
+        provider_3.calcPercentage();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 20;
+        int value = 21;
         switch (value) {
+            case 21:
+                testInterfacePercentage();
+                break;
             case 20:
                 testRRPayments();
                 break;
