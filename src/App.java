@@ -4,7 +4,10 @@ import com.infy.scannerdemo.ScannerDemo;
 
 import entity.Car;
 import entity.Chocolate;
+import entity.ContractEmployee;
+import entity.Employee;
 import entity.Loan;
+import entity.PermanentEmployee;
 import entity.Point;
 import entity.Reciept;
 import entity.Rectangle;
@@ -18,7 +21,7 @@ import utility.SalaryUtilities;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int value = 14;
+        int value = 15;
         switch (value) {
             case 1:
                 executeStudentProgram();
@@ -62,9 +65,31 @@ public class App {
             case 14:
                 testEventRegistration();
                 break;
+            case 15:
+                testEmployeeInheritance();
+                break;
             default:
                 break;
         }
+    }
+
+    private static void testEmployeeInheritance() {
+        PermanentEmployee employee_1 = new PermanentEmployee();
+        employee_1.setName("Anil");
+        employee_1.setEmpId(101);
+        employee_1.setBasicPay(10000);
+        employee_1.setHra(1500);
+        employee_1.setExperience(3);
+        employee_1.calculateSalary();
+        System.out.println("Permanent Employee: Your salary is: " + employee_1.getSalary());
+
+        ContractEmployee employee_2 = new ContractEmployee();
+        employee_2.setName("Ankit");
+        employee_2.setEmpId(102);
+        employee_2.setWages(500);
+        employee_2.setHours(10);
+        employee_2.calculateSalary();
+        System.out.println("Contract Employee: Your salary is: " + employee_2.getSalary());
     }
 
     private static void testEventRegistration() {
