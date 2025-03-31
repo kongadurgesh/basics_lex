@@ -76,9 +76,22 @@ public class App {
         provider_3.calcPercentage();
     }
 
+    private static void testEnum() {
+        student.Student student_1 = new student.Student();
+        student_1.setStudentId(1000);
+        student_1.setName("Alvin");
+        student_1.setTotalMarks(280);
+        student_1.calculateGrade();
+        student_1.calculateScholarshipAmount();
+        System.out.println(student_1.display());
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 23;
+        int value = 24;
         switch (value) {
+            case 24:
+                testEnum();
+                break;
             case 23:
                 testSealedClasses();
                 break;
