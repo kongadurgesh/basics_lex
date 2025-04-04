@@ -28,6 +28,7 @@ import entity.StudentRegistration;
 import entity.Trainee;
 import entity.User;
 import entity.VoteEligibilityChecker;
+import entity.ZoneTimeTest;
 import event.SingleEventRegistration;
 import event.TeamEventRegistration;
 import sealed.CocoaPowder;
@@ -130,9 +131,17 @@ public class App {
         checker.checkVoteEligibility();
     }
 
+    private static void testZoneTime() {
+        ZoneTimeTest test = new ZoneTimeTest();
+        test.testZoneTime();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 29;
+        int value = 30;
         switch (value) {
+            case 30:
+                testZoneTime();
+                break;
             case 29:
                 testVoteEligible();
                 break;
