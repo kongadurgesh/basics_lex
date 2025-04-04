@@ -5,7 +5,7 @@ public class StudentRegistration {
     private double age;
     private int admissionNumber;
     private int rollNo;
-    private static int counter = 1000;
+    private static int counter = 1001;
 
     public StudentRegistration(String studentName, double age, int admissionNumber) {
         this.studentName = studentName;
@@ -30,7 +30,6 @@ public class StudentRegistration {
     }
 
     public void generateRollNumber() {
-
         rollNo = ++counter;
     }
 
