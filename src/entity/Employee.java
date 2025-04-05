@@ -5,6 +5,15 @@ public class Employee {
     private String name;
     private double salary;
 
+    public Employee(String name, int empId, double salary) {
+        this.empId = empId;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public Employee() {
+    }
+
     public int getEmpId() {
         return empId;
     }

@@ -1,6 +1,14 @@
 package entity;
 
 public class PermanentEmployee extends Employee {
+    public PermanentEmployee(String name, int empId, double salary) {
+        super(name, empId, salary);
+    }
+
+    public PermanentEmployee() {
+        super();
+    }
+
     private double basicPay;
     private double hra;
     private int experience;

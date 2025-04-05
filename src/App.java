@@ -7,6 +7,7 @@ import entity.Chocolate;
 import entity.ContractEmployee;
 import entity.CreditCardPayment;
 import entity.DataProvider;
+import entity.EmployeeTester;
 import entity.Intern;
 import entity.Loan;
 import entity.LocalDateAndTime;
@@ -148,9 +149,17 @@ public class App {
         cube.test();
     }
 
+    private static void testEmployeeException() {
+        EmployeeTester employeeTester = new EmployeeTester();
+        employeeTester.testEmployee();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 32;
+        int value = 33;
         switch (value) {
+            case 33:
+                testEmployeeException();
+                break;
             case 32:
                 testTryCatch();
                 break;
