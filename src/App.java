@@ -7,6 +7,7 @@ import entity.Chocolate;
 import entity.ContractEmployee;
 import entity.CreditCardPayment;
 import entity.DataProvider;
+import entity.EmployeeTester;
 import entity.Intern;
 import entity.Loan;
 import entity.LocalDateAndTime;
@@ -25,7 +26,9 @@ import entity.RegularCustomer;
 import entity.ShoppingPayment;
 import entity.Student;
 import entity.StudentRegistration;
+import entity.TimeZoneTest;
 import entity.Trainee;
+import entity.TryMathCube;
 import entity.User;
 import entity.VoteEligibilityChecker;
 import entity.ZoneTimeTest;
@@ -136,9 +139,33 @@ public class App {
         test.testZoneTime();
     }
 
+    private static void testTimes() {
+        TimeZoneTest test = new TimeZoneTest();
+        test.calculateTimes();
+    }
+
+    private static void testTryCatch() {
+        TryMathCube cube = new TryMathCube();
+        cube.test();
+    }
+
+    private static void testEmployeeException() {
+        EmployeeTester employeeTester = new EmployeeTester();
+        employeeTester.testEmployee();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 30;
+        int value = 33;
         switch (value) {
+            case 33:
+                testEmployeeException();
+                break;
+            case 32:
+                testTryCatch();
+                break;
+            case 31:
+                testTimes();
+                break;
             case 30:
                 testZoneTime();
                 break;

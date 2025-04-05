@@ -1,6 +1,14 @@
 package entity;
 
 public class ContractEmployee extends Employee {
+    public ContractEmployee(String name, int empId, double salary) {
+        super(name, empId, salary);
+    }
+
+    public ContractEmployee() {
+        super();
+    }
+
     private double wages;
     private int hours;
 
