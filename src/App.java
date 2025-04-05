@@ -25,7 +25,9 @@ import entity.RegularCustomer;
 import entity.ShoppingPayment;
 import entity.Student;
 import entity.StudentRegistration;
+import entity.TimeZoneTest;
 import entity.Trainee;
+import entity.TryMathCube;
 import entity.User;
 import entity.VoteEligibilityChecker;
 import entity.ZoneTimeTest;
@@ -136,9 +138,25 @@ public class App {
         test.testZoneTime();
     }
 
+    private static void testTimes() {
+        TimeZoneTest test = new TimeZoneTest();
+        test.calculateTimes();
+    }
+
+    private static void testTryCatch() {
+        TryMathCube cube = new TryMathCube();
+        cube.test();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 30;
+        int value = 32;
         switch (value) {
+            case 32:
+                testTryCatch();
+                break;
+            case 31:
+                testTimes();
+                break;
             case 30:
                 testZoneTime();
                 break;
