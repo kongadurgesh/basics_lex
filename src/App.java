@@ -9,6 +9,9 @@ import entity.CreditCardPayment;
 import entity.DataProvider;
 import entity.Intern;
 import entity.Loan;
+import entity.LocalDateAndTime;
+import entity.LocationChanger;
+import entity.Palindrome;
 import entity.PermanentEmployee;
 import entity.PlayerRating;
 import entity.Point;
@@ -21,8 +24,11 @@ import entity.Registration;
 import entity.RegularCustomer;
 import entity.ShoppingPayment;
 import entity.Student;
+import entity.StudentRegistration;
 import entity.Trainee;
 import entity.User;
+import entity.VoteEligibilityChecker;
+import entity.ZoneTimeTest;
 import event.SingleEventRegistration;
 import event.TeamEventRegistration;
 import sealed.CocoaPowder;
@@ -76,9 +82,84 @@ public class App {
         provider_3.calcPercentage();
     }
 
+    private static void testEnum() {
+        student.Student student_1 = new student.Student();
+        student_1.setStudentId(1000);
+        student_1.setName("Alvin");
+        student_1.setTotalMarks(280);
+        student_1.calculateGrade();
+        student_1.calculateScholarshipAmount();
+        System.out.println(student_1.display());
+    }
+
+    private static void testObject() {
+        StudentRegistration registration_1 = new StudentRegistration("peter", 23, 5001);
+        StudentRegistration registration_2 = new StudentRegistration("Peter", 24, 5001);
+        if (registration_2.equals(registration_1)) {
+            System.out.println("Roll number already generated for the student!");
+        } else {
+            registration_2.generateRollNumber();
+            System.out.println("Student Details");
+            System.out.println("**********************************");
+            System.out.println("Student Name               :" + registration_2.getStudentName());
+            System.out.println("Admission Number           :" + registration_2.getAdmissionNumber());
+            System.out.println("Roll Number                :" + registration_2.getRollNo());
+        }
+    }
+
+    private static void testStringChange() {
+        LocationChanger changer = new LocationChanger();
+        changer.setName("Annabelle Michael");
+        changer.setLocation("BL003, Delhi, STP");
+        changer.welcomeEmployee();
+        changer.checkCity();
+        changer.editAddress();
+    }
+
+    private static void testPalindrome() {
+        Palindrome palindrome = new Palindrome();
+        palindrome.checkPalindrome(123431);
+    }
+
+    private static void testLocaldateAndTime() {
+        LocalDateAndTime localDateAndTime = new LocalDateAndTime();
+        localDateAndTime.testLocaldateAndTime();
+    }
+
+    private static void testVoteEligible() {
+        VoteEligibilityChecker checker = new VoteEligibilityChecker();
+        checker.checkVoteEligibility();
+    }
+
+    private static void testZoneTime() {
+        ZoneTimeTest test = new ZoneTimeTest();
+        test.testZoneTime();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 23;
+        int value = 30;
         switch (value) {
+            case 30:
+                testZoneTime();
+                break;
+            case 29:
+                testVoteEligible();
+                break;
+            case 28:
+                testLocaldateAndTime();
+                break;
+            case 27:
+                testPalindrome();
+                break;
+            case 26:
+                testStringChange();
+                break;
+            case 25:
+                testObject();
+                break;
+            case 24:
+                testEnum();
+                break;
             case 23:
                 testSealedClasses();
                 break;
