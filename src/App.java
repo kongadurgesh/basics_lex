@@ -39,6 +39,7 @@ import sealed.DarkChocolate;
 import sealed.WhiteChocolate;
 import utility.EnhancedFor;
 import utility.FunCalculator;
+import utility.LoggingTest;
 import utility.ReverseCalculator;
 import utility.SalaryUtilities;
 
@@ -154,9 +155,17 @@ public class App {
         employeeTester.testEmployee();
     }
 
+    private static void testLoggingTest() {
+        LoggingTest loggingTest = new LoggingTest();
+        System.out.println(loggingTest.divide(5.0f, 0f));
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 33;
+        int value = 34;
         switch (value) {
+            case 34:
+                testLoggingTest();
+                break;
             case 33:
                 testEmployeeException();
                 break;
