@@ -39,9 +39,13 @@ import sealed.DarkChocolate;
 import sealed.WhiteChocolate;
 import utility.EnhancedFor;
 import utility.FunCalculator;
+import utility.ListTester;
 import utility.LoggingTest;
+import utility.MapTester;
 import utility.ReverseCalculator;
 import utility.SalaryUtilities;
+import utility.SetTester;
+import utility.SortTest;
 
 public class App {
     private static void testFinalStipend() {
@@ -160,9 +164,44 @@ public class App {
         System.out.println(loggingTest.divide(5.0f, 0f));
     }
 
+    private static void testList() {
+        ListTester listTester = new ListTester();
+        // listTester.testList();
+        listTester.listTest();
+    }
+
+    private static void testSet() {
+        SetTester setTester = new SetTester();
+        // setTester.testSet();
+        setTester.testStudentsSet();
+    }
+
+    private static void testMap() {
+        MapTester mapTester = new MapTester();
+        // mapTester.testMap();
+        mapTester.testStudentsMap();
+    }
+
+    private static void testSort() {
+        SortTest sortTest = new SortTest();
+        sortTest.testSortTest();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 34;
+        int value = 38;
         switch (value) {
+            case 38:
+                testSort();
+                break;
+            case 37:
+                testMap();
+                break;
+            case 36:
+                testSet();
+                break;
+            case 35:
+                testList();
+                break;
             case 34:
                 testLoggingTest();
                 break;
