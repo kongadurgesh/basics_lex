@@ -5,6 +5,7 @@ import com.infy.scannerdemo.ScannerDemo;
 import entity.Car;
 import entity.Chocolate;
 import entity.ContractEmployee;
+import entity.CourseTest;
 import entity.CreditCardPayment;
 import entity.DataProvider;
 import entity.EmployeeTester;
@@ -30,6 +31,7 @@ import entity.TimeZoneTest;
 import entity.Trainee;
 import entity.TryMathCube;
 import entity.User;
+import entity.VehicleTester;
 import entity.VoteEligibilityChecker;
 import entity.ZoneTimeTest;
 import event.SingleEventRegistration;
@@ -37,11 +39,13 @@ import event.TeamEventRegistration;
 import sealed.CocoaPowder;
 import sealed.DarkChocolate;
 import sealed.WhiteChocolate;
+import test.CustomerTester;
 import utility.EnhancedFor;
 import utility.FunCalculator;
 import utility.ListTester;
 import utility.LoggingTest;
 import utility.MapTester;
+import utility.RecordTester;
 import utility.ReverseCalculator;
 import utility.SalaryUtilities;
 import utility.SetTester;
@@ -187,9 +191,57 @@ public class App {
         sortTest.testSortTest();
     }
 
+    private static void testCourse() {
+        CourseTest courseTest = new CourseTest();
+        courseTest.testCourse();
+    }
+
+    private static void testComparator() {
+        CourseTest courseTest = new CourseTest();
+        courseTest.testComparator();
+    }
+
+    private static void testRecord() {
+        RecordTester recordTester = new RecordTester();
+        recordTester.testRecord();
+    }
+
+    public static void vehicleTester() {
+        VehicleTester tester = new VehicleTester();
+        tester.testVehicle();
+    }
+
+    public static void customerTest() {
+        CustomerTester customerTester = new CustomerTester();
+        customerTester.testCustomer();
+    }
+
+    public static void customerTestMap() {
+        CustomerTester customerTester = new CustomerTester();
+        customerTester.testMap();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 38;
+        int value = 44;
         switch (value) {
+            case 44:
+                customerTestMap();
+                break;
+            case 43:
+                customerTest();
+                break;
+            case 42:
+                vehicleTester();
+                break;
+            case 41:
+                testRecord();
+                break;
+            case 40:
+                testComparator();
+                break;
+            case 39:
+                testCourse();
+                break;
             case 38:
                 testSort();
                 break;
