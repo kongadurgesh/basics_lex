@@ -36,6 +36,7 @@ import entity.VoteEligibilityChecker;
 import entity.ZoneTimeTest;
 import event.SingleEventRegistration;
 import event.TeamEventRegistration;
+import regex.RegexTester;
 import sealed.CocoaPowder;
 import sealed.DarkChocolate;
 import sealed.WhiteChocolate;
@@ -221,9 +222,17 @@ public class App {
         customerTester.testMap();
     }
 
+    public static void testRegex() {
+        RegexTester regexTester = new RegexTester();
+        regexTester.testRegex();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 44;
+        int value = 45;
         switch (value) {
+            case 45:
+                testRegex();
+                break;
             case 44:
                 customerTestMap();
                 break;
