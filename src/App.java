@@ -9,10 +9,12 @@ import entity.CourseTest;
 import entity.CreditCardPayment;
 import entity.DataProvider;
 import entity.EmployeeTester;
+import entity.Football;
 import entity.Intern;
 import entity.Loan;
 import entity.LocalDateAndTime;
 import entity.LocationChanger;
+import entity.Manager;
 import entity.Palindrome;
 import entity.PermanentEmployee;
 import entity.PlayerRating;
@@ -30,6 +32,7 @@ import entity.StudentRegistration;
 import entity.TimeZoneTest;
 import entity.Trainee;
 import entity.TryMathCube;
+import entity.UnmodifiableList;
 import entity.User;
 import entity.VehicleTester;
 import entity.VoteEligibilityChecker;
@@ -227,9 +230,41 @@ public class App {
         regexTester.testRegex();
     }
 
+    public static void testInnerClass() {
+        Manager manager = new Manager();
+        System.out.println(manager.checkEmployeeID("I1001", 80));
+    }
+
+    public static void testInnerFootBall() {
+        Football football = new Football();
+        football.printDetails();
+    }
+
+    public static void testUnmodifiableList() {
+        UnmodifiableList list = new UnmodifiableList();
+        list.testList();
+    }
+
+    public static void testUnmodifiableList2() {
+        UnmodifiableList list = new UnmodifiableList();
+        list.testList2();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 45;
+        int value = 49;
         switch (value) {
+            case 49:
+                testUnmodifiableList2();
+                break;
+            case 48:
+                testUnmodifiableList();
+                break;
+            case 47:
+                testInnerFootBall();
+                break;
+            case 46:
+                testInnerClass();
+                break;
             case 45:
                 testRegex();
                 break;
