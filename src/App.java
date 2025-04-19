@@ -10,10 +10,13 @@ import entity.CreditCardPayment;
 import entity.DataProvider;
 import entity.EmployeeTester;
 import entity.Football;
+import entity.InfyBakeryOrder;
+import entity.InstantTest;
 import entity.Intern;
 import entity.Loan;
 import entity.LocalDateAndTime;
 import entity.LocationChanger;
+import entity.MainTester;
 import entity.Manager;
 import entity.Palindrome;
 import entity.PermanentEmployee;
@@ -23,12 +26,15 @@ import entity.PremiumUser;
 import entity.PrivilegedCustomer;
 import entity.RRPaymentServices;
 import entity.Reciept;
+import entity.RecordPatternTest;
 import entity.Rectangle;
 import entity.Registration;
 import entity.RegularCustomer;
 import entity.ShoppingPayment;
 import entity.Student;
 import entity.StudentRegistration;
+import entity.SwitchTest;
+import entity.ThreadTester;
 import entity.TimeZoneTest;
 import entity.Trainee;
 import entity.TryMathCube;
@@ -250,9 +256,106 @@ public class App {
         list.testList2();
     }
 
+    public static void testSwitch() {
+        SwitchTest switchTest = new SwitchTest();
+        switchTest.testSwitch(4);
+    }
+
+    public static void testYield() {
+        SwitchTest switchTest = new SwitchTest();
+        switchTest.testYield(2);
+    }
+
+    public static void testBakery() {
+        InfyBakeryOrder bakeryOrder = new InfyBakeryOrder();
+        bakeryOrder.placeOrder();
+    }
+
+    public static void testInstant() {
+        InstantTest instantTest = new InstantTest();
+        instantTest.test();
+    }
+
+    public static void testInstant2() {
+        InstantTest instantTest = new InstantTest();
+        instantTest.test2();
+    }
+
+    public static void testInstant3() {
+        InstantTest instantTest = new InstantTest();
+        instantTest.test3();
+    }
+
+    public static void testInstant4() {
+        InstantTest instantTest = new InstantTest();
+        instantTest.test4();
+    }
+
+    public static void testInstance() {
+        RecordPatternTest patternTest = new RecordPatternTest();
+        patternTest.test();
+    }
+
+    public static void testNestedRecord() {
+        RecordPatternTest patternTest = new RecordPatternTest();
+        patternTest.test2();
+    }
+
+    public static void testPoint() {
+        RecordPatternTest patternTest = new RecordPatternTest();
+        patternTest.test3();
+    }
+
+    public static void testThread() throws InterruptedException {
+        ThreadTester tester = new ThreadTester();
+        tester.test();
+        tester.test2();
+    }
+
+    public static void testMain() {
+        MainTester mainTester = new MainTester();
+        mainTester.toString();
+    }
+
     public static void main(String[] args) throws Exception {
-        int value = 49;
+        int value = 61;
         switch (value) {
+            case 61:
+                testMain();
+                break;
+            case 60:
+                testThread();
+                break;
+            case 59:
+                testPoint();
+                break;
+            case 58:
+                testNestedRecord();
+                break;
+            case 57:
+                testInstance();
+                break;
+            case 56:
+                testInstant4();
+                break;
+            case 55:
+                testInstant3();
+                break;
+            case 54:
+                testInstant2();
+                break;
+            case 53:
+                testInstant();
+                break;
+            case 52:
+                testBakery();
+                break;
+            case 51:
+                testYield();
+                break;
+            case 50:
+                testSwitch();
+                break;
             case 49:
                 testUnmodifiableList2();
                 break;
