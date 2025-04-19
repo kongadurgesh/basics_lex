@@ -17,6 +17,9 @@ public class EmployeeTester {
                 empService.checkEmployeeSalary(employee);
             } catch (EmpSalaryException e) {
                 System.out.println(e.getMessage());
+                System.out.println(e.getCause());
+            } catch (Throwable e) {
+                System.out.println(e.getCause());
             }
         }
     }
