@@ -49,6 +49,7 @@ import regex.RegexTester;
 import sealed.CocoaPowder;
 import sealed.DarkChocolate;
 import sealed.WhiteChocolate;
+import test.CapstoneDemo;
 import test.CustomerTester;
 import utility.EnhancedFor;
 import utility.FunCalculator;
@@ -318,8 +319,14 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-        int value = 61;
+        int value = 63;
         switch (value) {
+            case 63:
+                CapstoneDemo.question2();
+                break;
+            case 62:
+                CapstoneDemo.question1();
+                break;
             case 61:
                 testMain();
                 break;
